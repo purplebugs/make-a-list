@@ -19,7 +19,7 @@ npm install
 Navigate to [server](./server) folder and run
 
 ```
-npm start
+node index
 ```
 
 ## License 📝
