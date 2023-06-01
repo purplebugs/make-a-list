@@ -1,4 +1,22 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Serve the make a list app",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/purplebugs/make-a-list.git"
+  },
+  "author": "Anita Lipsky",
+  "license": "SEE LICENSE IN Readme",
+  "bugs": {
+    "url": "https://github.com/purplebugs/make-a-list/issues"
+  },
+  "homepage": "https://github.com/purplebugs/make-a-list#readme",
   "dependencies": {
     "fastify": "^4.17.0"
   }
