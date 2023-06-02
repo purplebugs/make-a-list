@@ -2,6 +2,7 @@
 
 import Fastify from "fastify";
 import fastifyRedis from "@fastify/redis";
+import { v4 as uuidv4 } from "uuid";
 
 const fastify = Fastify({ logger: true });
 
@@ -24,9 +25,10 @@ fastify.get("/foo", async (req, reply) => {
 });
 
 fastify.post("/foo", async (req, reply) => {
+  const id = uuidv4();
   const { redis } = fastify;
   return redis.set(req.body.key, req.body.value, (err) => {
-    reply.send(err || { status: "ok" });
+    reply.send(err || { id: id });
   });
 });
 
