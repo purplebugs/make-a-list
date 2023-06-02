@@ -27,11 +27,16 @@ fastify.get("/foo", async (req, reply) => {
 fastify.post("/foo", async (req, reply) => {
   const id = uuidv4();
   const { redis } = fastify;
-  const body = {
-    key: id,
-    value: req.body.value,
-  };
-  return redis.set(req.body.key, body, (err) => {
+
+  // TODO send in id with POST request
+
+  // const body = {
+  //   key: id,
+  //   value: req.body.value,
+  // };
+  // return redis.set(req.body.key, body, (err) => {
+
+  return redis.set(req.body.key, req.body.value, (err) => {
     reply.send(err || { id: id });
   });
 });
