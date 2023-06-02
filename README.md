@@ -1,4 +1,4 @@
-# Make a list 📝
+# Make-A-List 📝
 
 App that will make a list based on image search
 
