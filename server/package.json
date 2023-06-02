@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Serve the make a list app",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +18,7 @@
   "homepage": "https://github.com/purplebugs/make-a-list#readme",
   "type": "module",
   "dependencies": {
-    "fastify": "^4.17.0"
+    "fastify": "^4.17.0",
+    "redis": "^4.6.7"
   }
 }
