@@ -17,6 +17,7 @@
     "url": "https://github.com/purplebugs/make-a-list/issues"
   },
   "homepage": "https://github.com/purplebugs/make-a-list#readme",
+  "type": "module",
   "dependencies": {
     "fastify": "^4.17.0"
   }
