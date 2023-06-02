@@ -39,8 +39,22 @@ node index
 
 ## Use the app 🚀
 
-1. View webserver messages 📬 at [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
-2. View database read/write output 💾 in the console
+1. View webserver message 📬 at [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
+2. Send GET/POST HTTP requests using Postman database read/write output 💾 in the console
+
+Examples
+
+```
+POST http://localhost:3000/foo
+
+{
+    "value": "anita"
+}
+```
+
+```
+GET http://localhost:3000/foo
+```
 
 ## Stop app 🚀
 
