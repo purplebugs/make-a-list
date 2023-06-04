@@ -44,7 +44,7 @@
 ```JSON
 {
     "uuid": "uuid",
-    "items: [
+    "items": [
         {
             "id":"id",
             "url":"url"
