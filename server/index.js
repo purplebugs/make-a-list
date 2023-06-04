@@ -1,15 +1,11 @@
 // Ref: https://www.fastify.io/docs/latest/Guides/Database/#redis
 
 import Fastify from "fastify";
-import fastifyRedis from "@fastify/redis";
+import { Redis } from "ioredis";
 import { v4 as uuidv4 } from "uuid";
 
 const fastify = Fastify({ logger: true });
-
-fastify.register(fastifyRedis, {
-  host: "127.0.0.1",
-  port: 6379, // Redis port
-});
+const redis = new Redis();
 
 // Declare routes
 
@@ -17,28 +13,22 @@ fastify.get("/", async () => {
   return { hello: "world" };
 });
 
-fastify.post("/foo", async (req, reply) => {
+fastify.post("/api/list", async (req, reply) => {
   const id = uuidv4();
-  const { redis } = fastify;
-
-  // TODO send in id with POST request
 
   // const body = {
-  //   key: id,
-  //   value: req.body.value,
+  //   id: "item-123",
+  //   url: "my-url",
   // };
-  // return redis.set(req.body.key, body, (err) => {
 
-  return redis.set(req.body.key, req.body.value, (err) => {
-    reply.send(err || { id: id });
-  });
+  redis.set(id, "anita");
+
+  reply.send(id);
 });
 
-fastify.get("/foo", async (req, reply) => {
-  const { redis } = fastify;
-  return redis.get(req.query.key, (err, val) => {
-    reply.send(err || val);
-  });
+fastify.get("/api/list/:id", async (req, reply) => {
+  const value = await redis.get(req.params.id);
+  reply.send(value);
 });
 
 // Run the server!
@@ -52,6 +42,3 @@ const start = async () => {
   }
 };
 start();
-
-// TODO
-// Continue. Ref: https://www.fastify.io/docs/latest/Guides/Getting-Started/

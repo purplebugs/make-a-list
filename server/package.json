@@ -18,8 +18,8 @@
   "homepage": "https://github.com/purplebugs/make-a-list#readme",
   "type": "module",
   "dependencies": {
-    "@fastify/redis": "^6.1.1",
     "fastify": "^4.17.0",
+    "ioredis": "^5.3.2",
     "redis": "^4.6.7",
     "uuid": "^9.0.0"
   }
