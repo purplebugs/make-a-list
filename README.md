@@ -72,6 +72,10 @@ Check which docker containers are running
 docker ps
 ```
 
+## API reference 🤖
+
+See [server/README.md](server/README.md)
+
 ## License 📝
 
 The work is under exclusive copyright by default.

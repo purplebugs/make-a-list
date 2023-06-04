@@ -17,13 +17,6 @@ fastify.get("/", async () => {
   return { hello: "world" };
 });
 
-fastify.get("/foo", async (req, reply) => {
-  const { redis } = fastify;
-  return redis.get(req.query.key, (err, val) => {
-    reply.send(err || val);
-  });
-});
-
 fastify.post("/foo", async (req, reply) => {
   const id = uuidv4();
   const { redis } = fastify;
@@ -38,6 +31,13 @@ fastify.post("/foo", async (req, reply) => {
 
   return redis.set(req.body.key, req.body.value, (err) => {
     reply.send(err || { id: id });
+  });
+});
+
+fastify.get("/foo", async (req, reply) => {
+  const { redis } = fastify;
+  return redis.get(req.query.key, (err, val) => {
+    reply.send(err || val);
   });
 });
 
