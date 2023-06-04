@@ -8,10 +8,31 @@ Should result in a greater understanding of how to solve this using 3rd party AP
 
 ## First time users only 🪴
 
-- Pre-condition: [Docker](https://docs.docker.com/) is installed
+Pre-condition: Redis server is installed and running locally
+
+Redis on [install-redis-on-mac-os](https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/)
+
+-
 
 ```
+# Install
+brew install redis
+
+# Start
+redis-server
+```
+
+or use Docker
+
+- [Docker](https://docs.docker.com/) is installed
+- Install `redis-stack`
+
+```
+# Install
 docker run -p 6379:6379 -it redis/redis-stack:latest
+
+# Start
+docker start redis-stack
 ```
 
 ## Install app 🐣
@@ -25,13 +46,8 @@ npm install
 Back end
 
 1. Navigate to [server](./server) folder
-2. Start redis server locally
 
-```
-docker start redis-stack
-```
-
-3. Start fastify server and redis client
+2. Start fastify server and redis client
 
 ```
 node index
