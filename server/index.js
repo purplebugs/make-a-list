@@ -15,19 +15,19 @@ fastify.get("/", async () => {
 
 fastify.post("/api/list", async (req, reply) => {
   const id = uuidv4();
+  // TODO check if id exists in Redis.  If so generate a new one and continue.
 
-  // const body = {
-  //   id: "item-123",
-  //   url: "my-url",
-  // };
-
-  redis.set(id, "anita");
+  const item_1 = { id: "item-1", value: "something in here" };
+  await redis.hset(id, item_1);
 
   reply.send(id);
 });
 
 fastify.get("/api/list/:id", async (req, reply) => {
-  const value = await redis.get(req.params.id);
+  // TODO if :id does not exist in Redis return 404
+  // https://www.fastify.io/docs/latest/Reference/Reply/#codestatuscode
+
+  const value = await redis.hget(req.params.id, "value");
   reply.send(value);
 });
 

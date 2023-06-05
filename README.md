@@ -61,15 +61,17 @@ node index
 Examples
 
 ```
-POST http://localhost:3000/foo
-
+POST http://localhost:3000/api/list
 {
-    "value": "anita"
 }
+# App hardcodes sending something for now
+# Returns id
 ```
 
 ```
-GET http://localhost:3000/foo
+GET http://localhost:3000/api/list/{id_returned_from_POST}
+
+# Returns some value from id
 ```
 
 ## Stop app 🚀
