@@ -17,7 +17,7 @@ fastify.post("/api/list", async (req, reply) => {
   const id = uuidv4();
   // TODO check if id exists in Redis.  If so generate a new one and continue.
 
-  const item_1 = { id: "item-1", value: "something in here" };
+  const item_1 = { id: "item:1", url: "some url of a found item" };
   await redis.hset(id, item_1);
 
   reply.send(id);
@@ -27,8 +27,9 @@ fastify.get("/api/list/:id", async (req, reply) => {
   // TODO if :id does not exist in Redis return 404
   // https://www.fastify.io/docs/latest/Reference/Reply/#codestatuscode
 
-  const value = await redis.hget(req.params.id, "value");
-  reply.send(value);
+  //const value = await redis.hget(req.params.id, "url"); // get one field
+  const values = await redis.hvals(req.params.id);
+  reply.send(values);
 });
 
 // Run the server!
