@@ -33,14 +33,17 @@ fastify.post("/api/list", async (req, reply) => {
 });
 
 fastify.get("/api/list/:id", async (req, reply) => {
-  const value = await redis.get(req.params.id);
+  const items = await redis.get(req.params.id);
 
-  if (!value) {
+  if (!items) {
     reply.code(404).send({
       message: "id not found",
     });
   }
-  reply.send(value);
+  reply.send({
+    uuid: "uuid",
+    items: JSON.parse(items),
+  });
 });
 
 // Run the server!
