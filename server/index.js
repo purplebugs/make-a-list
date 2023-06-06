@@ -14,8 +14,12 @@ fastify.get("/", async () => {
 });
 
 fastify.post("/api/list", async (req, reply) => {
-  const id = uuidv4();
-  // TODO check if id exists in Redis.  If so generate a new one and continue.
+  let id = uuidv4();
+  const idExists = (await redis.get(id)) ? true : false;
+
+  if (idExists) {
+    id = uuidv4();
+  }
 
   const items = [
     { id: "item:1", url: "some url of a found item 1" },
