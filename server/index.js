@@ -33,10 +33,13 @@ fastify.post("/api/list", async (req, reply) => {
 });
 
 fastify.get("/api/list/:id", async (req, reply) => {
-  // TODO if :id does not exist in Redis return 404
-  // https://www.fastify.io/docs/latest/Reference/Reply/#codestatuscode
-
   const value = await redis.get(req.params.id);
+
+  if (!value) {
+    reply.code(404).send({
+      message: "id not found",
+    });
+  }
   reply.send(value);
 });
 
