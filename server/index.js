@@ -21,6 +21,9 @@ fastify.post("/api/list", async (req, reply) => {
     id = uuidv4();
   }
 
+  // TODO List of items from user selecting the items in the UI,
+  // storing list in the browser,
+  // when user ready to share the list items will be sent as this POST request
   const items = [
     { id: "item:1", url: "some url of a found item 1" },
     { id: "item:2", url: "some url of a found item 2" },
